@@ -17,7 +17,7 @@ MAKE4HT= \
 .PHONY: all
 all: Main.pdf viewpdf clean
 clean-all: clean clean-everything
-pdf: Main.pdf viewpdf clean
+pdf: Main.pdf
 
 # PDF
 Main.pdf: main.tex
@@ -35,14 +35,20 @@ clean:
 	$(RM) *.xref
 	$(RM) *.idv
 	$(RM) *.lg
-	$(RM) *.css
 	$(RM) *.out.ps
 	$(RM) *.bbl
 	$(RM) *.bib.bbl
 	$(RM) *.bib.blg
 	$(RM) *.run.xml
 	$(RM) *.lol
+	$(RM) *.aux
+	$(RM) *.fdb_latexmk
+	$(RM) *.synctex.gz
+	$(RM) *.log
+	$(RM) *.fls
+	$(RM) *.toc
 clean-everything: clean
 	latexmk -CA
 	$(RM) *.html
+	$(RM) *.css
 	$(RM) *.pdf

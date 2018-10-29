@@ -1,5 +1,5 @@
 %
-% Module 3 Chapter 6 Homework
+% Module 4 Chapter 7 Homework
 % CSC160-C00: Computer Science I (C++)
 % Author: Ashton Hellwig
 %
@@ -36,7 +36,7 @@
   \usepackage{etoolbox,refcount}
   \usepackage{parcolumns}
 
-  \UseRawInputEncoding
+%   \UseRawInputEncoding
 
   % Tables
   \renewcommand\theadalign{bc}
@@ -147,7 +147,7 @@
   \setlength{\floatsep}{12pt}
 
   %% Title page
-  \title{Module 3 Chapter 6 Homework}
+  \title{Module 4 Chapter 7 Homework}
   \author{Ashton Hellwig}
   \date\today
   \setcounter{tocdepth}{3}
@@ -155,7 +155,7 @@
   %% Subsequent pages
   \lhead{CSC160}
   \rhead{Computer Science I (C++)}
-  \lfoot{M3C6HW}
+  \lfoot{M4C7HW}
   \rfoot{A. Hellwig}
 
  
@@ -168,303 +168,227 @@
 
   % Question 1
   \section{Question 1}
-    Determine the value of each of the following expressions:
+    Write C++ statements that do the following (assume the previous steps have been completed in
+      succession):
       \begin{enumerate}[label=\Alph*.]
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('7'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('@'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('s'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('J'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('*'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower(';'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('w'))}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('('))}
+          \item Define an enum type, birdType, with the values PEACOCK, SPARROW, CANARY, PARROT, PENGUIN,
+            OSTRICH, EAGLE, CARDINAL, and HUMMINGBIRD.
+          \item Declare a variable bird of the type birdType.
+          \item Assign CANARY to the variable bird.
+          \item Advance bird to the next value in the list.
+          \item Decrement bird to the previous value in the list.
+          \item Output the value of the variable bird. Input value in the variable bird
       \end{enumerate}
     % Question 1 Solution
     \subsection{Solution}
-      \begin{enumerate}[label=\Alph*.]
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('7'))} = \hl{7}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('@'))} = \hl{@}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('s'))} = \hl{S}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(toupper('J'))} = \hl{J}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('*'))} = \hl{*}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower(';'))} = \hl{;}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('w'))} = \hl{w}
-        \item \lstinline[columns=fixed, language=c++]%
-          {static_cast<char>(tolower('('))} = \hl{(}
-      \end{enumerate}
-
-  % Question 2
-  \section{Question 2}
-    Consider the following function:
-
-    \begin{lstlisting}[language=c++]
-int mystery(int x, double y, char ch) {
-  if (x == 0 && ch > 'A') 
-    return(static_cast<int>(pow(y, 2)) + static_cast<int> (ch)); 
-  else if (x > 0)
-    return(x + static_cast<int>(sqrt(y)) - static_cast<int> (ch)); 
-  else
-    return(2 * x + static_cast<int>(y) - static_cast<int> (ch));
-}
-    \end{lstlisting}
-
-    What is the output of the following C++ statements?
-      \begin{enumerate}[label=\Alph*.]
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << mystery(0, 6.5, 'K') << endl;}
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << mystery(4, 16.0, '#') << endl;}
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << 2 * mystery(-11, 13.8, '8') << endl;}
-      \end{enumerate}
-    % Question 2 Solution
-    \subsection{Solution}
-      \begin{enumerate}[label=\alph*.]
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << mystery(0, 6.5, 'K') << endl;} = \hl{117}
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << mystery(4, 16.0, '#') << endl;} = \hl{-27}
-        \item \lstinline[columns=fixed,language=c++]%
-          {cout << 2 * mystery(-11, 13.8, '8') << endl;} = \hl{-130}
-      \end{enumerate}
-
-  % Question 3
-  \section{Question 3}
-    Consider the following program:
-
-    \begin{lstlisting}[language=c++,numbers=left]
-#include <iostream>
-using namespace std; 
-
-void func1(); 
-void func2(); 
-
-int main() { 
-  int num;
-
-  cout << "Enter 1 or 2: "; 
-  cin >> num; 
-  cout << endl;
-
-  cout << "Take ";
-
-  if (num == 1) 
-    func1(); 
-  else if (num == 2) 
-    func2(); 
-  else 
-    cout << "Invalid input. You must enter a 1 or 2" << endl; 
-
-  return 0; 
-}
-
-void func1() { 
-  cout << "Programming I." <<endl;
-}
-
-void func2() { 
-  cout << "Programming II." <<endl;
-}
-    \end{lstlisting}
-
-    \begin{enumerate}[label=\Alph*.]
-      \item What is the output if the input is 1?
-      \item What is the output if the input is 2?
-      \item What is the output if the input is 3?
-      \item What is the output if the input is -1?
-    \end{enumerate}
-    % Question 3 Solution
-    \subsection{Solution}
-      \begin{table}[H]
-        \resizebox{\textwidth}{!}{
-        \begin{tabular}{||c|c||}
-          \hline
-          \textbf{Input} & \textbf{Output} \\ [0.5ex]
-          \hline\hline
-          1 & \hl{Take Programming I.} \\
-          \hline
-          2 & \hl{Take Programming II.} \\
-          \hline
-          3 & \hl{Take Invalid input. You must enter a 1 or 2} \\
-          \hline
-          -1 & \hl{Take Invalid input. You must enter a 1 or 2} \\
-          \hline
-        \end{tabular}}
-      \end{table}
-
-
-  \newpage
-  % Question 4
-  \section{Question 4}
-    Consider the following program:
-
-    \begin{lstlisting}[language=c++,numbers=left]
-#include <cmath>
-#include <iomanip>
+      \begin{lstlisting}[language=c++,caption={Question 1 Solution},numbers=left]
 #include <iostream>
 
 using namespace std;
 
-void traceMe(double x, double y);
+// Step A (Lines 6-16)
+enum birdType {
+  PEACOCK,
+  SPARROW,
+  CANARY,
+  PARROT,
+  PENGUIN,
+  OSTRICH,
+  EAGLE,
+  CARDINAL,
+  HUMMINGBIRD
+};
 
 int main() {
-  double one, two;
-
-  cout << "Enter two numbers: ";
-  cin >> one >> two;
-  cout << endl;
-
-  traceMe(one, two);
-  traceMe(two, one);
+  birdType bird; // Step B
+  
+  bird = birdType::CANARY; // Step C
+  
+  bird = static_cast<birdType>(bird + 1); // Step D
+  
+  bird = static_cast<birdType>(bird + 1); // Step E
+  
+  // Step F (Lines 28-?)
+  char first, second; // Declare `char` variables for selection structure
+  // Output enum type NAME (not value, which would be: cout << bird << endl;)
+  switch (bird) {
+    case PEACOCK:
+      cout << "Peacock";
+      break;
+    case SPARROW:
+      cout << "Sparrow";
+      break;
+    case CANARY:
+      cout << "Canary";
+      break;
+    case PARROT:
+      cout << "Parrot";
+      break;
+    case PENGUIN:
+      cout << "Penguin";
+      break;
+    case OSTRICH:
+      cout << "Ostrich";
+      break;
+    case EAGLE:
+      cout << "Eagle";
+      break;
+    case CARDINAL:
+      cout << "Cardinal";
+      break;
+    case HUMMINGBIRD:
+      cout << "Hummingbird";
+      break;
+    
+  }
+    
   return 0;
 }
 
-void traceMe(double x, double y) {
-  double z;
-  if (x != 0)
-    z = sqrt(y) / x;
-  else {
-    cout << "Enter a nonzero number: ";
-    cin >> x;
-    cout << endl;
-    z = floor(pow(y, x));
-  }
-  cout << fixed << showpoint << setprecision(2);
-  cout << x << ", " << y << ", " << z << endl;
-}
-    \end{lstlisting}
+      \end{lstlisting}
+    
 
-    \begin{enumerate}[label=\Alph*.]
-      \item What is the output if the input is 3 625?
-      \item What is the output if the input is 24 1024?
-      \item What is the output if the input is 0 196?
-    \end{enumerate}
+  \newpage
+  % Question 2
+  \section{Question 2}
+    Consider the following declaration:
+        \begin{lstlisting}[language=c++]
+enum fruitType{
+    ORANGE,
+    APPLE,
+    BANANA,
+    GRAPE,
+    STRAWBERRY,
+    MANGO,
+    GUAVA,
+    PINEAPPLE,
+    KIWI
+}; 
+fruitType fruit;
+        \end{lstlisting}
+        \begin{enumerate}[label=\Alph*.]
+            \item What is the value of \lstinline[language=c++]{static_cast<int>(STRAWBERRY)}?
+            \item What is the value, if any, of the following expression? \\
+                \lstinline[language=c++]{static_cast<fruitType>(static_cast<int>(MANGO) - 2)}
+            \item What is the value, if any, of the following expression? \\
+                \lstinline[language=c++]{static_cast<fruitType>(static_cast<int>(GRAPE) + 2)}
+            \item What is the value, if any, of the expression: \\
+                \lstinline[language=c++]{BANANA <= KIWI}
+            \item What is the output, if any, of the following code?
+                \begin{lstlisting}
+for (fruit = BANANA; fruit < PINEAPPLE; fruit++)
+    cout << static_cast<int>(fruit) << ", "; 
+
+cout << endl;
+                \end{lstlisting}
+        \end{enumerate}
+    % Question 2 Solution
+    \subsection{Solution}
+      \begin{enumerate}[label=\alph*.]
+          \item \lstinline[language=c++]{static_cast<int>(STRAWBERRY)} = $4$
+          \item \lstinline[language=c++]{static_cast<fruitType>(static_cast<int>(MANGO) - 2)}
+            = $3$
+          \item \lstinline[language=c++]{static_cast<fruitType>(static_cast<int>(GRAPE) + 2)}
+            = $5$
+          \item \lstinline[language=c++]{BANANA <= KIWI} = 1 (\lstinline[language=c++]{true})
+          \item \lstinline[language=bash,columns=fixed]{Cannot increment expression of enum type fruitType}
+      \end{enumerate}
+
+  \newpage
+  % Question 3
+  \section{Question 3}
+    Define an enumeration type triangleType with values EQUILATERAL, RIGHT, ISOSCELES, and SCALENE.
+        Also, declare the variable triangle of type triangleType while defining this type.
     % Question 3 Solution
     \subsection{Solution}
-      \begin{table}[H]
-        \resizebox{0.5\textwidth}{!}{
-        \begin{tabular}{||l|l||}
-          \hline
-          \textbf{Input} & \textbf{Output} \\ [0.5ex]
-          \hline\hline
-          3 625 & \makecell{\hl{3.00, 6.25, 8.33} \\ \hl{625.00, 3.00, 0.00}} \\
-          \hline
-          24 1024 & \makecell{\hl{24.00, 1024.00, 1.33} \\%
-            \hl{1024.00, 24.00, 0.00}} \\
-          \hline
-          0 196 & \makecell{\hl{Enter a nonzero number: 0 196} \\
-            \hl{0.00, 196.00, 1.00} \\%
-            \hl{196.00, 0.00, 0.00}} \\
-          \hline
-        \end{tabular}}
-      \end{table}
+      \begin{lstlisting}[language=c++,caption=Question 3 Solution,numbers=left]
+enum triangleType{
+  EQUILATERAL,
+  RIGHT,
+  ISOSCELES,
+  SCALENE
+} triangle;
+      \end{lstlisting}
+
+%   \newpage
+  % Question 4
+  \section{Question 4}
+    What is wrong with the following program?
+    \begin{lstlisting}[language=c++,numbers=left]
+#include <iostream>
+
+namespace mySpace
+{
+    const double RATE = 15.35;
+    int a;
+}
+
+using namespace std;
+
+int main()
+{
+    int b;
+    cin >> b;
+    a=b;
+    cout << RATE << " " << a + 2 << " " << b
+         << endl;
+    Return 0;
+}
+    \end{lstlisting}
+    % Question 4 Solution
+    \subsection{Solution}
+      \begin{center}
+          \textbf{NB}: This solution is based on the line numbers \textit{above}, not in the question on CCCO.
+      \end{center}
+      
+      \begin{enumerate}
+          \item \hl{\textbf{Line \#15}}: \texttt{a} is undeclared in this scope. To use properly,
+            the expression should have been using the scope-resolution operator (::) to access the
+            variable within another namespace. Or, in addition to the
+            \lstinline[language=c++,columns=fixed]{using namespace std;} statement,
+            one would use \lstinline[language=c++,columns=fixed]{using namespace mySpace;}
+            or even \lstinline[language=c++,columns=fixed]{using mySpace::a;} in order to forgo
+            the scope-resolution operator in the \lstinline[language=c++,columns=fixed]{main()}
+            function.
+          \item \hl{\textbf{Line \#16}}: As in \texttt{line 15}, \texttt{RATE} is undefined here.
+            In order to use the variable RATE from mySpace, the scope-resolution operator or a
+            \lstinline[language=c++,columns=fixed]{using} statement needs to be implemented.
+            The same goes for variable \texttt{a} in this line.
+          \item \hl{\textbf{Line \#18}}: \lstinline[language=c++,columns=fixed]{return} is
+            capitalized here. It should never be capitalized, but rather should be lowercase.
+      \end{enumerate}
 
 
   \newpage
   % Question 5
   \section{Question 5}
-    Consider the following function definition:
-
+    Suppose you have the following statements:
     \begin{lstlisting}[language=c++]
-void defaultParam(int num1, int num2 = 7, double z = 2.5) {
-  int num3;
-  num1 = num1 + static_cast<int>(z);
-  z = num2 + num1 * z;
-  num3 = num2 - num1;
-  cout << "num3 = " << num3 << endl;
-}
-    \end{lstlisting}
+string str1, str2;
 
-    What is the output of the following function calls?
+cin >> str1 >> str2; 
+if (str1 == str2) 
+cout << str1 + '!' << endl; 
+else if (str1 > str2) 
+cout << str1 + " > " + str2 << endl; 
+else cout << str1 + " < " + str2 << endl;
+    \end{lstlisting}
+    
+    Answer the following questions:
       \begin{enumerate}[label=\Alph*.]
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(7);}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(8, 2);}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(0, 1, 7.5);}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(1, 2, 3.0);}
+          \item What is the output if the input is Programming Project?
+          \item What is the output if the input is Summer Trip?
+          \item What is the output if the input is Winter Cold?
       \end{enumerate}
-  % Question 5 Solution
+    % Question 5 Solution
     \subsection{Solution}
       \begin{enumerate}[label=\alph*.]
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(7);}
-
-          \begin{lstlisting}[language=bash,caption=5a Solution]
-num3 = -2
-          \end{lstlisting}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(8, 2);}
-
-          \begin{lstlisting}[language=bash,caption=5b Solution]
-num3 = -8
-          \end{lstlisting}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(0, 1, 7.5);}
-
-          \begin{lstlisting}[language=bash,caption=5c Solution]
-num3 = 6
-          \end{lstlisting}
-        \item \lstinline[language=c++,columns=fixed]
-          {defaultParam(1, 2, 3.0);}
-
-          \begin{lstlisting}[language=bash,caption=5d Solution]
-num3 = -2
-          \end{lstlisting}
+          \item \lstinline[language=bash,columns=fixed]{Programming < Project}
+          \item \lstinline[language=bash,columns=fixed]{Summer < Trip}
+          \item \lstinline[language=bash,columns=fixed]{Winter > Cold}
       \end{enumerate}
 
-
-  \newpage
-  \appendix
-  \section{Question 1}
-    \begin{lstlisting}[language=c++,label={q1:listing},caption={Question 1 Implementation}]
-#include <iostream>
-
-using namespace std;
-
-int main() {
-  char a = static_cast<char>(toupper('7'));
-  char b = static_cast<char>(toupper('@'));
-  char c = static_cast<char>(toupper('s'));
-  char d = static_cast<char>(toupper('J'));
-  char e = static_cast<char>(tolower('*'));
-  char f = static_cast<char>(tolower(';'));
-  char g = static_cast<char>(tolower('w'));
-  char h = static_cast<char>(tolower('('));
-
-  cout << "a = " << a << '\n';
-  cout << "b = " << b << '\n';
-  cout << "c = " << c << '\n';
-  cout << "d = " << d << '\n';
-  cout << "e = " << e << '\n';
-  cout << "f = " << f << '\n';
-  cout << "g = " << g << '\n';
-  cout << "h = " << h << endl;
-
-  return 0;
-}
-    \end{lstlisting}
-    \begin{figure}[H]
-      \centering
-      \caption{Listing \ref{q1:listing} Output}
-      \includegraphics{q1output.png}
-      \label{q1:output}
-    \end{figure}
+%   \newpage
+%   \appendix
+%   \section{Question }
 \end{document}
